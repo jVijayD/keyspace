@@ -27,6 +27,7 @@ choice(choices: ['Y','N'], description: 'is the deployment for release' , name: 
 			   withAWS(region:'us-east-1', credentials:'keyuser'){
                     s3Upload(file:'CounterWebApp.war', bucket:'jenkin-qa', path:'/var/lib/jenkins/workspace/mutli-pipeline_main/target')
 			   }
+		    }
 	    }
 			    stage('Deploy to Tomcat') {
             steps {
