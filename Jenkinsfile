@@ -9,7 +9,7 @@ choice(choices: ['Y','N'], description: 'is the deployment for release' , name: 
 
     agent any   
     tools {
-    maven 'maven3.8.4'	
+    maven 'maven3.8.4'	p
 	}
     stages {
         stage('Checkout') {
@@ -24,8 +24,8 @@ choice(choices: ['Y','N'], description: 'is the deployment for release' , name: 
         }
 	    stage('S3 Bucket') {
 		    steps {
-			s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'jenkin-qa', excludedFile: '', flatten: true, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-iso-east-1', showDirectlyInBrowser: false, sourceFile: '**/*.war', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'keyuser', userMetadata: []
-	    }
+			withAWS(credentials:'keyuser') {
+                        s3Upload acl: 'Public', bucket: 'jenkin-qa', file: "CounterWebApp.war", path: '/var/lib/jenkins/workspace/mutli-pipeline_main@2/target/'
 	    }
    }
 }
