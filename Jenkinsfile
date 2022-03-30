@@ -24,9 +24,8 @@ choice(choices: ['Y','N'], description: 'is the deployment for release' , name: 
         }
 	    stage('S3 Bucket') {
 		    steps {
-			    s3Upload(acl: 'Public', bucket: 'webgym', cacheControl: '', excludePathPattern: '', file: 'CounterWebApp.war', workingDir: '/var/lib/jenkins/workspace/mutli-pipeline_main/target')
-
-		    }
+			   withAWS(region:'us-east-1', credentials:'keyuser'){
+                    s3Upload(file:'CounterWebApp.war, bucket:'jenkin-qa', path:'/var/lib/jenkins/workspace/mutli-pipeline_main/target')
 	    }
 			    stage('Deploy to Tomcat') {
             steps {
