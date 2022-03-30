@@ -24,10 +24,8 @@ choice(choices: ['Y','N'], description: 'is the deployment for release' , name: 
         }
 	    stage('S3 Bucket') {
 		    steps {
-			s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'jenkin-qa', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-iso-east-1', showDirectlyInBrowser: false, sourceFile: '/var/lib/jenkins/workspace/mutli-pipeline_main/target/', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'keyuser', userMetadata: []
-			
-		    }
+			s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'jenkin-qa', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-iso-east-1', showDirectlyInBrowser: false, sourceFile: '/var/lib/jenkins/workspace/mutli-pipeline_main@2 ', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'keyuser', userMetadata: []
 	    }
-	
-    }
+	    }	
+   }
 }
