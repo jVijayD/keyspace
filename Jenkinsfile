@@ -12,7 +12,7 @@ choice(choices: ['Y','N'], description: 'is the deployment for release' , name: 
     maven 'maven3.8.4'	
 	}
 	options {
-	withAWS(profile:'s3jenkins')
+	withAWS(profile:'default')
      }
     stages {
         stage('Checkout') {
