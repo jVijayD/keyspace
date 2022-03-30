@@ -25,7 +25,7 @@ choice(choices: ['Y','N'], description: 'is the deployment for release' , name: 
 	    stage('S3 Bucket') {
 		    steps {
 		
-                        s3Upload acl: 'Private', bucket: 'jenkin-qa', file: 'CounterWebApp.war'
+                  s3Upload(acl: 'Private', bucket:"jenkin-qa", cacheControl: '', excludePathPattern: '', file: 'CounterWebApp.war', workingDir:'/var/lib/jenkins/workspace/mutli-pipeline_main/target/')
 	
 		    }
 	    }
