@@ -24,7 +24,7 @@ choice(choices: ['Y','N'], description: 'is the deployment for release' , name: 
         }
 	    stage('S3 Bucket') {
 		    steps {
-		withAWS(region:'us-east-1',credentials:'keyuser') {
+		withAWS(region:'us-east-1',credentials:'awsbucket') {
                   s3Upload(acl: 'Private', bucket:"jenkin-qa", cacheControl: '', excludePathPattern: '', file: 'CounterWebApp.war', workingDir:'/var/lib/jenkins/workspace/mutli-pipeline_main/target/')
 		}
 		    }
