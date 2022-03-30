@@ -25,7 +25,7 @@ choice(choices: ['Y','N'], description: 'is the deployment for release' , name: 
 	    stage('S3 Bucket') {
 		    steps {
 		
-                        s3Upload acl: 'Private', bucket: 'jenkin-qa', file: 'CounterWebApp.war', path:'s3://jenkin-qa/'
+                        s3Upload acl: 'Private', bucket: 'jenkin-qa', file: 'CounterWebApp.war'
 	
 		    }
 	    }
