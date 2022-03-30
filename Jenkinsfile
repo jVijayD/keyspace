@@ -25,7 +25,7 @@ choice(choices: ['Y','N'], description: 'is the deployment for release' , name: 
 	    stage('S3 Bucket') {
 		    steps {
 			withAWS(region:'us-east-1', credentials:'keyuser') {
-                        s3Upload acl: 'Public', bucket: 'jenkin-qa', file: "CounterWebApp.war", path: '/var/lib/jenkins/workspace/mutli-pipeline_main@2/target/'
+                        //s3Upload acl: 'Public', bucket: 'jenkin-qa', file: "CounterWebApp.war", path: '/var/lib/jenkins/workspace/mutli-pipeline_main@2/target/'
 			}
 		    }
 	    }
