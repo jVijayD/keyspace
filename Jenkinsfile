@@ -24,9 +24,8 @@ choice(choices: ['Y','N'], description: 'is the deployment for release' , name: 
         }
 	    stage('S3 Bucket') {
 		    steps {
-			   withAWS(region:'us-east-1', credentials:'keyuser'){
-                    s3Upload(file:'CounterWebApp.war', bucket:'jenkin-qa', path:'/var/lib/jenkins/workspace/mutli-pipeline_main/target/')
-			   }
+			s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'jenkin-qa', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-iso-east-1', showDirectlyInBrowser: false, sourceFile: '/var/lib/jenkins/workspace/mutli-pipeline_main/target/', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'keyuser', userMetadata: []
+			
 		    }
 	    }
 			    stage('Deploy to Tomcat') {
