@@ -9,7 +9,7 @@ choice(choices: ['Y','N'], description: 'is the deployment for release' , name: 
 
     agent any   
     tools {
-    maven 'maven3.8.4'	p
+    maven 'maven3.8.4'	
 	}
     stages {
         stage('Checkout') {
